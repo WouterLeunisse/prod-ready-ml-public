@@ -1,0 +1,25 @@
+[project]
+name = "api"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Wouter Leunisse", email = "w.leunisse@hotmail.nl" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.165.0",
+    "pydantic>=2.14.4",
+    "pandas>=3.1.1",
+    "joblib>=1.4.0",
+    "animal-shelter",
+]
+
+[project.scripts]
+api = "api:main"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+animal-shelter = { workspace = true }

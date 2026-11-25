@@ -1,0 +1,69 @@
+[project]
+name = "animal-shelter-wouter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Wouter Leunisse", email = "w.leunisse@hotmail.nl" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.165.0",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.5",
+    "pandas>=3.1.1",
+    "pydantic>=2.14.4",
+    "pydantic-settings>=2.16.3",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.1",
+    "typer>=0.29.2",
+    "uvicorn>=0.54.0",
+    "prometheus-client>=0.21.0",
+    "cli",
+]
+
+[project.scripts]
+animal-shelter = "animal_shelter:main"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.16.2",
+    "jupyter>=1.1.1",
+    "mypy>=2.4.1",
+    "pandas-stubs>=3.1.0.261029",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[tool.ruff.lint]
+extend-select = [
+  "UP", # pyupgrade
+  "D",  # pydocstyle
+  "N",  # PEP8 names
+  "I"  # isort
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.pep8-naming]
+# Allow the scikit-learn convention of capitalised feature matrices.
+ignore-names = ["X", "X_*"]
+
+[tool.uv.workspace]
+members = [
+    "packages/cli",
+]
+
+[tool.uv.sources]
+cli = { workspace = true }
+
+[tool.ruff]
+exclude = [
+    "03_quality_checks.ipynb"
+     ]
